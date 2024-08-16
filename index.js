@@ -1,6 +1,6 @@
 require('dotenv').config();
 const mysql = require('mysql2');
-const faker = require('@faker-js/faker');
+const {faker} = require('@faker-js/faker');
 
 const { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 const connection = mysql.createConnection({
@@ -20,9 +20,9 @@ function addData() {
         for (let i = 0; i < 50000; i++) {
             
             const values = [
-                faker.name.findName(),
+                faker.name.fullName(),
                 faker.datatype.number({ min: 18, max: 99 }),
-                faker.phone.phoneNumber(),
+                faker.phone.number(),
                 faker.internet.email(),
                 faker.address.city()
             ];
